@@ -11,8 +11,8 @@ class Map extends React.Component {
     };
 
     const initMap = function (coords) {
-      var myCoords = new google.maps.LatLng('0', '0');
-      var mapOptions = {
+      const myCoords = new google.maps.LatLng('0', '0');
+      const mapOptions = {
         center: myCoords,
         zoom: 3
       };

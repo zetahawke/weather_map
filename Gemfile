@@ -40,8 +40,11 @@ gem 'redis-store'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'geocoder'
 # Google api client gem
 gem 'google-api-client'
+
+gem 'forecast_io'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
