@@ -1,6 +1,15 @@
 import React from "react"
 class Map extends React.Component {
   componentDidMount() {
+    const loadMarkers = function(coords, map){
+      forEach(coords, function(coord){
+        new google.maps.Marker({
+          position: coord,
+          map: map
+        });
+      })
+    };
+
     const initMap = function (coords) {
       var myCoords = new google.maps.LatLng('0', '0');
       var mapOptions = {
@@ -8,12 +17,14 @@ class Map extends React.Component {
         zoom: 3
       };
       var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+      loadMarkers(coords, map);
     };
 
     App.carros = App.cable.subscriptions.create("MapChannel", {
       connected: function () {
         console.log("Conectado");
-        initMap({});
+        initMap([]);
       },
 
       disconnected: function () {
