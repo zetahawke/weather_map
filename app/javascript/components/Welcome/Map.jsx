@@ -1,9 +1,19 @@
 import React from "react"
 class Map extends React.Component {
   componentDidMount() {
+    const initMap = function (coords) {
+      var myCoords = new google.maps.LatLng('0', '0');
+      var mapOptions = {
+        center: myCoords,
+        zoom: 3
+      };
+      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    };
+
     App.carros = App.cable.subscriptions.create("MapChannel", {
       connected: function () {
-        console.log("Conectado")
+        console.log("Conectado");
+        initMap({});
       },
 
       disconnected: function () {
@@ -17,7 +27,12 @@ class Map extends React.Component {
   }
 
   render() {
-    return <h1>{this.props.greeting}</h1>
+    // return <h1>{this.props.greeting}</h1>
+    return(
+      <div className='google-map'>
+        <div id='map'></div>
+      </div>
+    );
   }
 }
 
