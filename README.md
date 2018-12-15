@@ -19,15 +19,16 @@ El frontend deberá actualizarse cada 10 segundos a través de web sockets. El p
 
 La app debe ser desplegada en heroku. 
 
-- [ ] Add google API
-- [ ] Add and config Redis
-- [ ] Create https://darksky.net/dev service to get data from it
-- [ ] Retrive information about each city:
+- [x] Add google API
+- [x] Add and config Redis
+- [x] Create https://darksky.net/dev service to get data from it
+- [x] Retrive information about each city:
   -- Santiago (CL)
   -- Zurich (CH)
   -- Auckland (NZ)
   -- Sydney (AU)
   -- Londres (UK)
   -- Georgia (USA)
-- [ ] Add 10%~ chance to fail each request through darksky service
+- [x] Add 10%~ chance to fail each request through darksky service
+- [x] Adding real time updates each 10 secs using websockets
 - [ ] Upload to heroku
