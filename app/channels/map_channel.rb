@@ -3,7 +3,9 @@ class MapChannel < ApplicationCable::Channel
     stream_from 'map_channel'
   end
 
-  def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+  def unsubscribed; end
+
+  def refresh_info
+    MapService.update_cities_information
   end
 end
