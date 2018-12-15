@@ -31,6 +31,7 @@ class Map extends React.Component {
     };
 
     self.clearMarkers = function () {
+      // drops into version method error
       // for (var i = 0; i < self.markers.length; i++) {
       //   self.markers[i].setMap(null);
       // }
@@ -66,7 +67,6 @@ class Map extends React.Component {
   }
 
   render() {
-    // return <h1>{this.props.greeting}</h1>
     return(
       <div className='google-map'>
         <div id='map'></div>
