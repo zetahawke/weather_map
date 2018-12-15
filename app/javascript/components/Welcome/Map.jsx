@@ -4,43 +4,65 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
     self = this;
-  }
+    self.markers = [];
 
-  componentDidMount() {
-    const loadMarkers = function(coords, map){
-      coords.forEach(function(coord){
-        new google.maps.Marker({
-          position: new google.maps.LatLng(coord.lat, coord.lon),
-          map: map
+    self.loadMarkers = function (coords, map) {
+      coords.forEach(function (coord) {
+        let city_name = Object.keys(coord)[0];
+        let props = Object.values(coord)[0];
+        let marker = new google.maps.Marker({
+          position: new google.maps.LatLng(props.lat, props.lon),
+          map: map,
+          title: city_name + ', ' + props.time + ', ' + props.temp
         });
+        self.markers.push(marker);
       })
     };
 
-    const initMap = function (coords) {
+    self.initMap = function (coords) {
       const myCoords = new google.maps.LatLng('0', '0');
       const mapOptions = {
         center: myCoords,
         zoom: 3
       };
-      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+      self.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-      loadMarkers(coords, map);
+      self.loadMarkers(coords, self.map);
     };
 
-    App.carros = App.cable.subscriptions.create("MapChannel", {
+    self.clearMarkers = function () {
+      // for (var i = 0; i < self.markers.length; i++) {
+      //   self.markers[i].setMap(null);
+      // }
+      self.markers = [];
+    };
+  }
+  
+  componentDidMount() {
+
+    App.map = App.cable.subscriptions.create("MapChannel", {
       connected: function () {
         console.log("Conectado");
-        initMap(self.props.coords);
+        self.initMap(self.props.coords);
       },
 
       disconnected: function () {
-        // Called when the subscription has been terminated by the server
       },
 
       received: function (data) {
         console.log(data);
+        self.clearMarkers();
+        self.loadMarkers(data.coords, self.map)
+      },
+
+      speak: function(){
+        this.perform('refresh_info');
       }
     });
+
+    setInterval(function(){
+      App.map.speak();
+    }, 10000)
   }
 
   render() {
