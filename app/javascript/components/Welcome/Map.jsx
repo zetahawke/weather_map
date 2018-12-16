@@ -43,7 +43,6 @@ class Map extends React.Component {
 
     App.map = App.cable.subscriptions.create("MapChannel", {
       connected: function () {
-        console.log("Conectado");
         self.initMap(self.props.coords);
       },
 
@@ -51,7 +50,6 @@ class Map extends React.Component {
       },
 
       received: function (data) {
-        console.log(data);
         self.clearMarkers();
         self.loadMarkers(data.coords, self.map)
       },
@@ -62,7 +60,7 @@ class Map extends React.Component {
     });
 
     setInterval(function(){
-      App.map.speak();
+      // App.map.speak();
     }, 10000)
   }
 

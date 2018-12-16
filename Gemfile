@@ -6,7 +6,8 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+gem 'pg', '0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -17,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'react-rails'
+gem "libv8", github: "cowboyd/libv8", submodules: true
 gem 'mini_racer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
@@ -40,9 +42,14 @@ gem 'redis-store'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.4.0'
+gem 'sassc-rails', '>= 2.0.0'
+
 gem 'geocoder'
 # Google api client gem
 gem 'google-api-client'
+gem 'dotenv-rails'
 
 gem 'forecast_io'
 
@@ -61,7 +68,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'dotenv-rails'
 end
 
 group :test do
