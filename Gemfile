@@ -43,7 +43,7 @@ gem 'redis-store'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'jquery-rails'
-gem 'bootstrap-sass', '~> 3.4.0'
+gem 'bootstrap', '~> 4.1.3'
 gem 'sassc-rails', '>= 2.0.0'
 
 gem 'geocoder'
