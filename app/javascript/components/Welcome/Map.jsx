@@ -60,6 +60,7 @@ class Map extends React.Component {
     });
 
     setInterval(function(){
+      // commented cz of Free Plan API requests limits 1000, currently 868
       // App.map.speak();
     }, 10000)
   }
