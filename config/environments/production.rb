@@ -95,16 +95,16 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Activate Redis cache
-  config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
+  config.cache_store = :redis_store, "ENV["REDISTOGO_URL"] || "redis://localhost:6379/"/0/cache", { expires_in: 90.minutes }
 
   # Activate Redis HTTP cache
   config.action_dispatch.rack_cache = {
-    metastore: 'redis://localhost:6379/1/metastore',
-    entitystore: 'redis://localhost:6379/1/entitystore'
+    metastore: 'ENV["REDISTOGO_URL"] || "redis://localhost:6379/"/1/metastore',
+    entitystore: 'ENV["REDISTOGO_URL"] || "redis://localhost:6379/"/1/entitystore'
   }
 
   WeatherMap::Application.config.session_store :redis_store,
-    servers: ["redis://localhost:6379/0/session"],
+    servers: ["ENV["REDISTOGO_URL"] || "redis://localhost:6379/"/0/session"],
     expire_after: 90.minutes,
     key: "_#{Rails.application.class.parent_name.downcase}_session",
     threadsafe: false

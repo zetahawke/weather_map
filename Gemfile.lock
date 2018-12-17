@@ -214,22 +214,8 @@ GEM
       railties (>= 3.2)
       tilt
     redis (4.1.0)
-    redis-actionpack (5.0.2)
-      actionpack (>= 4.0, < 6)
-      redis-rack (>= 1, < 3)
-      redis-store (>= 1.1.0, < 2)
-    redis-activesupport (5.0.7)
-      activesupport (>= 3, < 6)
-      redis-store (>= 1.3, < 2)
-    redis-rack (2.0.5)
-      rack (>= 1.5, < 3)
-      redis-store (>= 1.2, < 2)
     redis-rack-cache (2.0.2)
       rack-cache (>= 1.6, < 2)
-      redis-store (>= 1.2, < 2)
-    redis-rails (5.0.2)
-      redis-actionpack (>= 5.0, < 6)
-      redis-activesupport (>= 5.0, < 6)
       redis-store (>= 1.2, < 2)
     redis-store (1.6.0)
       redis (>= 2.2, < 5)
@@ -333,8 +319,8 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.2)
   react-rails
+  redis
   redis-rack-cache
-  redis-rails (~> 5)
   redis-store
   sass-rails (~> 5.0)
   sassc-rails (>= 2.0.0)
