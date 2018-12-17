@@ -19,7 +19,7 @@ gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'react-rails'
 gem "libv8", '6.7.288.46.1' #, github: "cowboyd/libv8", submodules: true
-gem 'mini_racer', platforms: :ruby
+gem 'mini_racer' #, platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -40,7 +40,7 @@ gem 'redis-store'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-# gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.4.0'
