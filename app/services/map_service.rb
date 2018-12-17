@@ -21,6 +21,7 @@ class MapService
 
     coords = { lat: city_info.data['lat'], lon: city_info.data['lon'] }
     forecast_info = ForecastService.new(coords).info
+    return { city => coords.merge( { time: Time.now, temp: '' } ) } if forecast_info.blank? || forecast_info['currently'].blank?
     { city => coords.merge(time: Time.at(forecast_info['currently']['time']).to_s, temp: forecast_info['currently']['temperature']) }
   end
 end
