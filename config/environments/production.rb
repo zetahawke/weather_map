@@ -109,7 +109,7 @@ Rails.application.configure do
     key: "_#{Rails.application.class.parent_name.downcase}_session",
     threadsafe: false
 
-  config.action_cable.url = 'wss://weather-map.herokuapp.com/cable'
-  config.web_socket_server_url = "wss://weather-map.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['https://weather-map.herokuapp.com', 'http://weather-map.herokuapp.com']
+  config.action_cable.url = 'wss://zhawke-weather-map.herokuapp.com/cable'
+  config.web_socket_server_url = "wss://zhawke-weather-map.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://zhawke-weather-map.herokuapp.com', 'http://zhawke-weather-map.herokuapp.com']
 end
