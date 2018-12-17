@@ -1,0 +1,25 @@
+setup:
+  addons:
+    - plan: 'heroku-postgresql:hobby-dev'
+      as: DATABASE
+    - plan: 'redistogo:nano'
+      as: REDISTOGO
+  config:
+    COMPOSE_PROJECT_NAME: weather_map
+    FORECAST_IO_SECRET_KEY: a55a92eea808a970c5f577b878a86214
+    GOOGLE_API_KEY: AIzaSyANFxJfqjfHIYfldg4RJ5C19RAs_oCORbE
+    LANG: en_US.UTF-8
+    RACK_ENV: production
+    RAILS_ENV: production
+    RAILS_LOG_TO_STDOUT: 'true'
+    RAILS_SERVE_STATIC_FILES: enabled
+    REDIS_PROVIDER: REDISTOGO_URL
+    SECRET_KEY_BASE: supersecret
+build:
+  languages:
+    - ruby
+run:
+  rake: bundle exec rake
+  console: bin/rails console
+  web: bin/rails server -p $PORT -e $RAILS_ENV
+  website: bundle exec puma -C config/puma.rb
